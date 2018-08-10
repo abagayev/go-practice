@@ -32,6 +32,7 @@ func CountDigits(i int) (count int) {
 }
 
 // calculating in babylonian method
+// https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method
 func sqrt(s float64) float64 {
 	x := float64(CountDigits(int(s)))
 
@@ -43,6 +44,7 @@ func sqrt(s float64) float64 {
 }
 
 // solve quadratic equation and return both x1 and x2
+// https://en.wikipedia.org/wiki/Quadratic_formula
 func equation(a float64, b float64, c float64) (float64, float64) {
 	d := square(b) - 4*a*c
 	if d < 0 {
