@@ -17,9 +17,9 @@ import "unicode"
 
 func isLetter(c string) bool {
   r := []rune(c)[0]
-  b := unicode.IsLetter(r);
+  b := unicode.IsLetter(r)
 
-  return b;
+  return b
 }
 
 func wave(phrase string) {
