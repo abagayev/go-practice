@@ -5,6 +5,7 @@ type Field interface {
 	Set(i, j, v int)
 	Width() int
 	Height() int
+	Output() [][]int
 }
 
 type Game struct {
@@ -32,6 +33,10 @@ func (g *Game) neighbours(i, j int) (count int) {
 	}
 
 	return count
+}
+
+func (g *Game) O() [][]int {
+	return g.Field.Output()
 }
 
 func (g *Game) Live() {

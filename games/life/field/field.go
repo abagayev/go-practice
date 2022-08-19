@@ -16,14 +16,14 @@ func (f *Field) Init(width, height uint) {
 	}
 }
 
-func (f *Field) Shake(density int) {
+func (f *Field) Shake(density uint) {
 	// initialize the generator to a deterministic state
 	rand.Seed(time.Now().UnixNano())
 
 	for i, row := range f.cells {
 		for j := range row {
 			r := rand.Intn(10)
-			if r > (10 - density) {
+			if r > (10 - int(density)) {
 				f.cells[i][j] = 1
 				continue
 			}
