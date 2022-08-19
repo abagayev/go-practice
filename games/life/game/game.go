@@ -1,18 +1,19 @@
 package game
 
-type Field interface {
-	Get(i, j int) int
-	Set(i, j, v int)
-	Width() int
-	Height() int
-	Output() [][]int
-}
-
 type Game struct {
 	Field Field
 }
 
-// count cell neighbours
+// NewGame creates a game with predefined screen size and population density.
+func NewGame(width, height, density uint) *Game {
+	f := &Field{}
+	f.Init(width, height)
+	f.Shake(density)
+
+	return &Game{*f}
+}
+
+// Count alive cell neighbours.
 func (g *Game) neighbours(i, j int) (count int) {
 	matrix := [][]int{
 		{-1, -1},
@@ -35,10 +36,7 @@ func (g *Game) neighbours(i, j int) (count int) {
 	return count
 }
 
-func (g *Game) O() [][]int {
-	return g.Field.Output()
-}
-
+// Live the life with Conway's rules.
 func (g *Game) Live() {
 	for i := 0; i < g.Field.Height(); i++ {
 		for j := 0; j < g.Field.Width(); j++ {
@@ -66,4 +64,8 @@ func (g *Game) Live() {
 			}
 		}
 	}
+}
+
+func (g *Game) Output() [][]int {
+	return g.Field.Output()
 }
