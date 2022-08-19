@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/abagayev/go-practice/basics/games/life/field"
+	"github.com/abagayev/go-practice/basics/games/life/game"
 )
 
 func draw(f *field.Field) {
@@ -25,15 +26,17 @@ func draw(f *field.Field) {
 
 func main() {
 	f := &field.Field{}
-	f.Start(20, 20)
+	f.Init(20, 20)
 	f.Shake(3)
+
+	g := &game.Game{f}
 
 	for range [50]int{} {
 		// clear the screen
 		fmt.Print("\033[H\033[2J")
 
 		draw(f)
-		f.Live()
+		g.Live()
 
 		time.Sleep(1 * time.Second)
 	}
