@@ -5,6 +5,19 @@ principles: condition, cycles, data structures, packages, documentation and test
 
 ![](./docs/life.gif)
 
+To start the game, run a script without or with command-line flags:
+
+```shell
+# start a basic game
+go run main.go
+
+# change screen size
+go run main.go -width=30 -height=30
+
+# change starting population density
+go run main.go -density=9
+```
+
 ### For curious minds
 
 Still curios what is going on here? Please refer to Wikipedia:   
